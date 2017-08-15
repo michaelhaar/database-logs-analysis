@@ -19,9 +19,20 @@ in your terminal to see the version number.
 
 ## Usage
 
+### Clone the repository
+Clone this repository by running ``git clone https://github.com/michi1992/database-logs-analysis`` in your terminal window. 
+
+Also make sure to unzip the ``newsdata.zip`` file and move the ``newsdata.sql`` file into the ``vagrant`` folder.
+
 ### Start the virtual machine
 From your terminal, inside the vagrant subdirectory, run the command `vagrant up`. This will cause Vagrant to download the Linux operating system and install it. This may take quite a while (many minutes) depending on how fast your Internet connection is.
+
+*Note:* The command ``vagrant up`` threw an error on my machine. I had to enable SVM in my BIOS in order to fix it.
+
 When vagrant up is finished running, you will get your shell prompt back. At this point, you can run `vagrant ssh` to log in to your newly installed Linux VM!
+
+
+![screenshot of the vagrant login page](https://github.com/michi1992/database-logs-analysis/blob/master/images_for_readme/vagrant_loginscreen.png)
 
 
 ## Authors
