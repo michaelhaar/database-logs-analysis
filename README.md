@@ -31,8 +31,19 @@ From your terminal, inside the vagrant subdirectory, run the command `vagrant up
 
 When vagrant up is finished running, you will get your shell prompt back. At this point, you can run `vagrant ssh` to log in to your newly installed Linux VM!
 
-
 ![screenshot of the vagrant login page](https://github.com/michi1992/database-logs-analysis/blob/master/images_for_readme/vagrant_loginscreen.png)
+
+### Prepare the data
+Once you are connected to your virtual machine, load the data by entering the following commands: 
+```
+$ cd /vagrant
+$ psql -d news -f newsdata.sql
+```
+Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
+
+If you want to play around with the database you can do this by running ``psql news`` inside that virtual maschine.
+
+![screenshot of how to run sql-statements against the database](https://github.com/michi1992/database-logs-analysis/blob/master/images_for_readme/run_sql_statements.png)
 
 
 ## Authors
