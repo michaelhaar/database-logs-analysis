@@ -57,9 +57,13 @@ If you want to play around with the database you can do this by running ``psql n
 ![screenshot of how to run sql-statements against the database](https://github.com/michi1992/database-logs-analysis/blob/master/images_for_readme/run_sql_statements.png)
 
 ### How to run the analysis script
+The analysis script is writen in Python and uses the ``psycopg2`` library to access the database. This package is already installed on the provided virtual machine and therefor you don't need to worry about that.
+
 Simply type ``python logs_analysis.py`` while you are inside the virtual machine. This should give you a output similiar to this screenshot:
 
 ![Screenshot of the analysis script output](https://github.com/michi1992/database-logs-analysis/blob/master/images_for_readme/analysis_script_output.png)
+
+In case you want to redirect the output to a file type ``python logs_analysis.py > output_file.txt`` in your terminal window instead.
 
 Have fun!
 
