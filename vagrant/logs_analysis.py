@@ -31,8 +31,8 @@ def popular_articles():
 
     # print the top 5 articles
     for pop_article in pop_articles:
-        output_string = "\"" + pop_article[0] + "\" - " +
-        str(pop_article[1]) + " views"
+        output_string = ("\"" + pop_article[0] + "\" - " +
+                         str(pop_article[1]) + " views")
         print(output_string)
 
     # Close communication with the database
@@ -68,8 +68,7 @@ def popular_authors():
 
     # print the top 5 authors
     for pop_author in pop_authors:
-        output_string = "\"" + pop_author[0] + "\" - " +
-        str(pop_author[1]) + " views"
+        output_string = pop_author[0] + " - " + str(pop_author[1]) + " views"
         print(output_string)
 
     # Close communication with the database
@@ -112,8 +111,8 @@ def request_errors_analysis():
 
     # print the error_rates
     for error_rate in error_rates:
-        output_string = "\"" + error_rate[0].strftime('%B %d, %Y') + "\" - " +
-        str(error_rate[1]) + "% errors"
+        output_string = (error_rate[0].strftime('%B %d, %Y') + " - " +
+                         str(error_rate[1]) + "% errors")
         print(output_string)
 
     # Close communication with the database
@@ -124,10 +123,10 @@ def request_errors_analysis():
 
 
 if __name__ == '__main__':
-    print("\nTop 5 articles:")
+    print("\nTop 3 articles:")
     popular_articles()
 
-    print("\nTop 5 authors:")
+    print("\nMost popular authors:")
     popular_authors()
 
     print("\nDays with error rates higher than 1%:")
