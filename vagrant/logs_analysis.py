@@ -20,7 +20,8 @@ def popular_articles():
     query = """
     SELECT articles.title, count(log.path) AS views
     FROM articles LEFT JOIN log
-    ON log.path LIKE concat('%',articles.slug)
+    ON log.path = concat('/article/',articles.slug)
+    WHERE log.status = '200 OK'
     GROUP BY articles.title
     ORDER BY views DESC
     LIMIT 3;
@@ -58,7 +59,8 @@ def popular_authors():
     query = """
     SELECT subq.name, count(log.path) AS views
     FROM ({}) AS subq LEFT JOIN log
-    ON log.path LIKE concat('%',subq.slug)
+    ON log.path = concat('/article/',subq.slug)
+    WHERE log.status = '200 OK'
     GROUP BY subq.name
     ORDER BY views DESC;
     """.format(subquery)
