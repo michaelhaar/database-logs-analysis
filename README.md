@@ -52,6 +52,16 @@ $ psql -d news -f newsdata.sql
 ```
 Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
 
+I've created the following view in the database:
+```
+CREATE VIEW request_stats AS
+SELECT CAST(time as date) AS request_date, count(*) AS total_requests,
+SUM(CASE WHEN status='404 NOT FOUND' THEN 1 ELSE 0 END) AS bad_requests
+FROM log
+GROUP BY request_date;
+```
+Please make sure to do the same in your database otherwise the analysis script won't run properly.
+
 If you want to play around with the database you can do this by running ``psql news`` inside that virtual machine.
 
 ![screenshot of how to run sql-statements against the database](https://github.com/michi1992/database-logs-analysis/blob/master/images_for_readme/run_sql_statements.png)
