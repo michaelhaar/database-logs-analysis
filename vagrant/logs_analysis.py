@@ -68,7 +68,7 @@ def popular_authors():
 
     pop_authors = cur.fetchall()
 
-    # print the top 5 authors
+    # print all authors
     for pop_author in pop_authors:
         output_string = pop_author[0] + " - " + str(pop_author[1]) + " views"
         print(output_string)
@@ -88,24 +88,22 @@ def request_errors_analysis():
     cur = conn.cursor()
 
     # Create a view in the database
-    # I think it's easier to create the view here in the python script.
-    # In a real project I would do this only once in the database.
-    sql_command = """
-    CREATE OR REPLACE VIEW request_stats AS
-    SELECT CAST(time as date) AS request_date, count(*) AS total_requests,
-    SUM(CASE WHEN status='404 NOT FOUND' THEN 1 ELSE 0 END) AS bad_requests
-    FROM log
-    GROUP BY request_date;
-    """
-    cur.execute(sql_command)
+    # The create view statement must be done in the database
+    # sql_command = """
+    # CREATE OR REPLACE VIEW request_stats AS
+    # SELECT CAST(time as date) AS request_date, count(*) AS total_requests,
+    # SUM(CASE WHEN status='404 NOT FOUND' THEN 1 ELSE 0 END) AS bad_requests
+    # FROM log
+    # GROUP BY request_date;
+    # """
+    # cur.execute(sql_command)
 
     # Query the database and obtain data as Python objects
-    # I have also tried 'HAVING error_rate > 1;' instead of
-    # 'WHERE bad_requests*100/total_requests > 1;' but somehow it's not working
     query = """
-    SELECT request_date, bad_requests*100/total_requests AS error_rate
+    SELECT request_date,
+    ROUND((bad_requests*100.0/total_requests)::decimal, 2) AS error_rate
     FROM request_stats
-    WHERE bad_requests*100/total_requests > 1;
+    WHERE bad_requests*100.0/total_requests > 1;
     """
     cur.execute(query)
 
