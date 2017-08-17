@@ -11,6 +11,6 @@ Anonymous Contributor - 170098 views
 Markoff Chaney - 84557 views
 
 Days with error rates higher than 1%:
-July 17, 2016 - 2% errors
+July 17, 2016 - 2.26% errors
 
 
